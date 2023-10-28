@@ -1,0 +1,1298 @@
+* {
+    /* The * is to select all */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Describing the structure of the content contained within the html file and body */
+.html,
+.body {
+    width: 100%;
+    height: 100%;
+}
+
+.img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* HEADER */
+#header {
+    background-color: rgb(31, 31, 31);
+    padding: 10px;
+    text-align: center;
+}
+
+.header-container {
+    background-color: rgb(31, 31, 31);
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+
+/* Neon-Text Effect */
+.neon-text,
+.neon-text2 {
+    /* using the .neon-text for both texts ie; .neon-text and .neon-text2 to set the rules for both classes */
+    color: #fff;
+    /* the text-shadow will make the text have a glow and shadow effect */
+    text-shadow:
+        /* White glow with shadow glow */
+        0 0 7px #fff,
+        0 0 10px #000000,
+        0 0 21px #fff,
+        /* Ambient colour glow */
+        0 0 42px rgb(175, 19, 5),
+        0 0 82px rgb(245, 58, 255),
+        0 0 92px rgb(59, 44, 215),
+        0 0 102px rgb(255, 145, 0),
+        0 0 140px rgb(63, 225, 55);
+
+}
+
+/* Neon-Text font sizing to rem in order to make it responsive without the text resizing itself automatically */
+.neon-text {
+    font-size: 3rem;
+}
+
+.neon-text2 {
+    font-size: 1rem;
+}
+
+/* Adding @media screen for .p-text-container (neon header text) to make it reposonsive to smaller devices */
+@media screen and (min-width:601px) {
+    .p-text-container {
+        font-size: 80px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .p-text-container {
+        font-size: 30px;
+    }
+}
+
+
+.body {
+    /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em;
+    /* Font-size is set to rem to make it responsive */
+    font-size: 1rem;
+}
+
+.container {
+    background-color: rgb(31, 31, 31);
+    max-width: auto;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    /* positioning the cards on smaller devices */
+    flex-wrap: wrap;
+
+}
+
+.intro-container {
+    color: white;
+    /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 2em;
+    text-transform: uppercase;
+    font-family: 'Abel', sans-serif;
+    /* Font-size is set to rem to make it responsive */
+    font-weight: 3rem;
+
+}
+
+.card-wrap {
+    /* Using card-wrap to wrap all cards to prevent overflow in order to fit in a flex container */
+    min-width: 300px;
+    max-width: 300px;
+    /* Perspective gives the property an element of 3D-space by affecting the distance between the user*/
+    /* This will make the card flip animation run smoothly from one another */
+    /* The perspective property is for the child element to get the perspecitve view, not the element itself */
+    perspective: 1000px;
+    flex: 1;
+    margin: 0 15px 30px;
+}
+
+
+#row {
+    display: flex;
+    flex-direction: row;
+    /* Making it aligned in space-around to make card items have space before, between and after each other */
+    justify-content: space-around;
+    /* using flex-flow property to specify the direction of the row container and wrap behaviour/ */
+    flex-flow: wrap;
+}
+
+/* The sections for each gallery card  */
+/* The same rules applies on .section to ensure that the section and row are the same */
+.section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* using flex-flow property to specify the direction of the row container and wrap behaviour/ */
+    flex-flow: wrap;
+    height: 100px;
+
+}
+
+/* ALL GALLERY CARDS */
+.card {
+    width: 400px;
+    height: 400px;
+    /* To set the position of the actual card relative to its normal position */
+    /* Position of card needs to be absolutely positioned for the child card front */
+    position: relative;
+    /* Adding another width to  */
+    width: 300px;
+    transition: transform 1s;
+    /* Setting style to preserve-3d making it positioned in the 3D-space */
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+}
+
+/* CARD 1  */
+#C1-front {
+    /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/pale-crystal.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    /* Adding this property and value to be used to transition this value, so card is facing the correct way in begin with*/
+    transform: rotateY(0deg);
+}
+
+#C1-front h1 {
+    /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C1-back {
+    /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C1-back h1 {
+    color: rgb(227, 63, 63);
+    /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C1-back p {
+    /* Set to em to adjust without breaking the design layout */
+    margin-bottom: 0.5em;
+    color: aliceblue;
+    /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C1-front {
+    /* Rotating the front card when hover */
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C1-back {
+    /* When card hover to back, it will not rotate so it doesn't over flip*/
+    transform: rotateY(0deg);
+    /* Setting the opacity to 1 to make back card visible when hover */
+    opacity: 1;
+}
+
+/* Rules when hovering both front and back of cards */
+.card > #C1-front,
+.card > #C1-back {
+    height: 400px;
+    /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C1-front,
+#C1-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    /* Round edges */
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+    /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD 2 */
+#C2-front {
+     /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/orange-blue.jpeg);
+     /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+      /* Adding this property and value to be used to transition this value, so card is facing the correct way in begin with*/
+    transform: rotateY(0deg);
+    color: white;
+}
+
+#C2-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    text-align: left;
+}
+
+#C2-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C2-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C2-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: 0.5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C2-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C2-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C2-front,
+.card > #C2-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C2-front,
+#C2-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+    
+}
+
+/* CARD 3 */
+#C3-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/amethyst.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+    color: white;
+}
+
+#C3-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    text-align: left;
+}
+
+#C3-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C3-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C3-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: 0.5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C3-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C3-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C3-front,
+.card > #C3-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C3-front,
+#C3-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD #4 */
+#C4-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/shiny-blue.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C4-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C4-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C4-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C4-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: .5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C4-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C4-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C4-front,
+.card > #C4-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C4-front,
+#C4-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD 5 */
+#C5-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/abstract-closeup.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C5-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C5-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C5-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C5-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: .5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C5-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C5-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C5-front,
+.card > #C5-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C5-front,
+#C5-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: .5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD #6 */
+#C6-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/blue-crystal.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C6-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C6-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C6-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: .5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C6-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: .5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C6-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C6-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C6-front,
+.card > #C6-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C6-front,
+#C6-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: .5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD #7 */
+#C7-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/Rainbow-Crystal.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C7-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C7-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C7-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: .5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C7-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: .5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C7-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C7-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C7-front,
+.card > #C7-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C7-front,
+#C7-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD #8 */
+#C8-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/Tall-Crystal.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C8-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C8-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C8-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C8-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: 0.5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C8-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C8-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C8-front,
+.card > #C8-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C8-front,
+#C8-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: .5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD #9 */
+#C9-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/Blue-Quartz.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C9-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C9-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C9-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: .5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C9-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: .5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C9-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C9-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C9-front,
+.card > #C9-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C9-front,
+#C9-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD #10 */
+#C10-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/Diamonds.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C10-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C10-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C10-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C10-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: .5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C10-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C10-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C10-front,
+.card > #C10-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C10-front,
+#C10-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD #11 */
+#C11-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/shiny-necklace.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C11-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C11-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C11-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C11-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: 0.5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C11-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C11-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C11-front,
+.card > #C11-back {
+    height: 400px;
+    /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C11-front,
+#C11-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+/* CARD 12 */
+#C12-front {
+      /* Rounding the edges to make it a card style */
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../images/regal.jpg);
+    /* Aligning the center of the background image with the center of the background position layer ie 'center, center' */
+    background-position: center center;
+    transform: rotateY(0deg);
+}
+
+#C12-front h1 {
+     /* Font is set to em in order to be able to change the text size without breaking the design layout */
+    font-size: 1.2em;
+    font-weight: 200;
+    color: white;
+    text-align: left;
+}
+
+#C12-back {
+     /* Rotating the back of the card in the Y axis to -180 degrees -> this will make the back of card flip opposite direction but this won't be visible until any actions has been formed-> hover/clicked (other devices) */
+    /* Flipping the back card opposite even when it's hidden, will allow us to flip the card in the correct direction rather than opposite after flipping */
+    transform: rotateY(-180deg);
+    width: 100%0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The opactiy is set to 0 so the back is hidden by default*/
+    opacity: 0;
+}
+
+#C12-back h1 {
+    color: rgb(227, 63, 63);
+     /* Margin-bottom is is to em so the margin bottom sizing can be adjusted without breaking the design layout */
+    margin-bottom: 0.5em;
+    /* Using rem for the font-size instead of px as rem will make it responsive for all devices within the root element */
+    font-size: 2rem;
+}
+
+#C12-back p {
+      /* Set to em to adjust without breaking the design layout */
+    margin-bottom: 0.5em;
+    color: aliceblue;
+     /* rem for the font-size to make it responsive within the root element */
+    font-size: 1rem;
+}
+/* Creating rules of actions for the flip cards */
+/* Using the (>) element selector aka the child combinator which is used to place between two css selectors*/
+/* (>) selects only the immediate child elements matched by the first selector (card) that also matches the second selector (front card- #C1-front) */
+.card:hover > #C12-front {
+    transform: rotateY(180deg);
+}
+
+.card:hover > #C12-back {
+    transform: rotateY(0deg);
+    opacity: 1;
+}
+/* Rotating the front card when hover */
+.card > #C12-front,
+.card > #C12-back {
+    height: 400px;
+     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
+    padding: 1em 2em;
+}
+/* Creating a group selector to ensure that the text isn't bleeding through for both cards (front & back)*/
+#C12-front,
+#C12-back {
+    /* Setting a background colour so that the cards and texts don't overlay on top of one another to make sure users can't see through  */
+    background-color: rgb(0, 0, 0);
+    background-size: cover;
+    border-radius: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+     /* Using transition to animate the flip cards */
+    /* Transition-property is used to select which transition effect should be applied */
+    transition-property: transform, opacity;
+    /* Setting the length of time in transition animation since the default is a value of 0s */
+    transition-duration: 0.5s;
+     /* Cubic-bezier offers precise control over animation timing using fixed ratio-defined points P0 (0.17) for the start and P3 (1.275) for the end. */
+    transition-timing-function: cubic-bezier(0.17, 0.885, 0.32, 1.275);
+    /* Round edges */
+    border-radius: 10px;
+       /* Using a box-shadow to add shadow effects around an element's frame (Cards) */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
+}
+
+
+
+/* Footer  */
+#footer {
+    background-color: rgb(70, 70, 70);
+    padding: 10px;
+    text-align: right;
+    width: 100%;
+
+}
+
+/* Rules for All the cards  */
+
+
+/* break point for tablets */
+@media screen and (max-width:900px) {
+    .column {
+        min-width: 50%;
+    }
+}
+
+/* break point for mobile */
+@media screen and (max-width:500px) {
+    .column {
+        min-width: 100%;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    p {
+        font-size: 1.4rem;
+    }
+}
+
+.post-wrap {
+    min-width: 300px;
+    max-width: 380px;
+}
