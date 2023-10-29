@@ -9,7 +9,10 @@
 .html,
 .body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .img {
@@ -73,14 +76,28 @@
     }
 }
 
-
 .body {
     /* Padding is set to em so it stays proportionate to the scailing of the font-size */
     padding: 1em;
     /* Font-size is set to rem to make it responsive */
     font-size: 1rem;
 }
+/* Home icon */
+#home-icon{
+    display: flex;
+    
+}
+#logo {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    display: inline-block;
+    left: 20px;
+    filter: drop-shadow(10px 10px 30px rgb(252, 137, 5));
+    align-items: center;
+}
 
+/* The main container */
 .container {
     background-color: rgb(31, 31, 31);
     max-width: auto;
@@ -1295,4 +1312,99 @@
 .post-wrap {
     min-width: 300px;
     max-width: 380px;
+}
+/* READ MORE BUTTON */
+
+.glow-hover h2{
+    font-family: 'Abel', sans-serif;
+    text-transform: uppercase;
+}
+
+.glow-hover {
+    width: 220px;
+    height: 50px;
+    outline: none;
+    /* The colour of the text 'Read More' */
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    /* z-index controls the stacking order of overlapping elements on page, so to ensure that there are no overlapping elements is to set to 0 */
+    z-index: 0;
+    /* Rounded edges */
+    border-radius: 10px;
+    /* Set to em to adjust without breaking the design layout */
+    margin-bottom: 2em;
+    /* Adding a drop shadow to make it look more within the theme by creating a flow shadow effect */
+    filter: drop-shadow(0 0 0.75rem crimson);
+}
+/* Before the glow hover effect */
+.glow-hover:before {
+    /* A content property is used as a pseudo-selector, for before and after pseudo elements to insert generated content */
+    /* In this case I do not need any content so this is an "invisble element" to this style which I can still style it with an empty string */
+    /* Using the content property with an empty value or no value is a common practice for inserting decorative or spacing elements using pseudo-elements without adding visible content. */
+    /* without this empty value content, the glow hover action will not work */
+    content: ''; 
+    /* Creating a rainbow effect */
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    /* Absolutely positioned */
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    /* z-index property is used to control the stacking order of the positioned elements */
+    /* Making it stacked underneath the main glow-hover button which has a higher positive value of 0 so therefore this z-index is value of -1*/
+    z-index: -1;
+    /* Blur effect */
+    filter: blur(5px);
+    /* Set calculations to specify values of width and height of button element with the result of more than one numeric values */
+    /* the glow-hover:before will always have a width and height that is 4px more than 100% of its parent width and height */
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    /* Making the animation glow effect perform a linear style with a repeat of infinity */
+    animation: glowing 20s linear infinite;
+    /* Setting the opacity to 0 so the animation linear glow is hidden before any action of hover/click */
+    opacity: 0;
+    /* Transition rules */
+    transition: opacity 0.3s ease-in-out;
+    /* Rounded edges */
+    border-radius: 10px;
+}
+/* Activating the glow-hover effect */
+.glow-hover:active {
+    /* Text 'Read More' colour */
+    color: #ffffff
+}
+/* Using a Pseudo-class selector to select elements that are in a specific state -> hover */
+/* Pseudo class(:active -> selects the active link) and follow by an :after selector	*/
+.glow-hover:active:after {
+    /* When actively clicked and after click action, the background colour becomes transparent */
+    background-color: transparent;
+}
+/* Pseudo classes ( :hover -> Selects links on mouse over) and follow by a :before selector*/
+.glow-hover:hover:before {
+    /* Making the glow hover effect visible since the glow-hover:before is hidden */
+    opacity: 1;
+}
+
+.glow-hover:after {
+/* Making it stacked underneath the main glow-hover button which has a higher positive value of 0 so therefore this z-index is value of -1*/
+/* Both z-index is set to -1 on both .glow-hover:before and .glow-hover:after */
+    z-index: -1;
+    /* Using the content property with an empty value or no value is a common practice for inserting decorative or spacing elements using pseudo-elements without adding visible content */
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    /* Rounded edges */
+    border-radius: 10px;
+}
+
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
