@@ -1401,6 +1401,17 @@
     /* Rounded edges */
     border-radius: 10px;
 }
+/* Button link */
+.glow-hover a:active{
+    
+}
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+a:active{
+ 
+}
 
 
 @keyframes glowing {
